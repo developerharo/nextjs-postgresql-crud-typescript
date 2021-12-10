@@ -1,8 +1,7 @@
-// minuto 1:41:08
-
 import { Button, Card, Form, Icon } from 'semantic-ui-react';
 import {ChangeEvent, FormEvent, useState} from 'react';
 import { Task } from 'src/interfaces/Task';
+import router, { useRouter } from 'next/router';
 
 export default function newPage() {
   const [task, setTask] = useState({
@@ -30,6 +29,7 @@ export default function newPage() {
     
     try {
       await createTask(task);
+      router.push("/");
     } catch (error) {
       console.log(error);
     }
